@@ -7,10 +7,12 @@ import { APP_ROUTES } from './app.routes';
 // Modulos personalizados
 import { PageModule } from './pages/pages.module';
 
+import { FormsModule } from '@angular/forms';
 // Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { RegisterComponent } from './login/register.component';
   imports: [
     BrowserModule,
     APP_ROUTES,
-    PageModule
+    PageModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
