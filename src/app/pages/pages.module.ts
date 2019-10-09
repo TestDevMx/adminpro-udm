@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 // rutas
 import { PAGES_ROUTES } from './pages.routes';
 
@@ -21,6 +22,10 @@ import { AccoutSettingsComponent } from './accout-settings/accout-settings.compo
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
+//Pipe module
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfileComponent } from './profile/profile.component';
+
 
 
 @NgModule({
@@ -33,7 +38,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         GraficoDonaComponent,
         AccoutSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports: [ // PORQUE SE VAN A USAR POR OTROS COMPONENTES FUERA DE ESTE MODULO
         DashboardComponent,
@@ -44,7 +50,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule,
+        CommonModule
     ]
 })
 export class PageModule { }
