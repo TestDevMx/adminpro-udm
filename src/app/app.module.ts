@@ -23,11 +23,13 @@ import { RegisterComponent } from './login/register.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent
+    
   ],
   imports: [
     BrowserModule,

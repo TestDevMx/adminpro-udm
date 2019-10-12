@@ -1,0 +1,44 @@
+import { Injectable, EventEmitter } from '@angular/core';
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ModalUploadService {
+
+  public tipo: string;
+  public id: string;
+
+  public oculto:string = 'oculto';
+  public notificacion = new EventEmitter<any>();
+
+  public titulo:string;
+
+  constructor(
+    
+  ) { 
+    
+  }
+
+  ocultarModal(){
+    this.oculto='oculto'
+    this.id = null;
+    this.tipo = null;
+    this.titulo = '';
+  }
+
+  mostrarModal(config: ConfigModal){
+    this.oculto='';
+    this.id = config.id;
+    this.tipo = config.tipo;
+    this.titulo = config.titulo;
+  }
+}
+
+// Prueba interfaz
+interface ConfigModal{
+  tipo:string,
+  id:string,
+  titulo: string
+}

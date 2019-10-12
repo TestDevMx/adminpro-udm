@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
-import { POST_ALTA_USUARIO, POST_LOGIN, POST_LOGIN_GOOGLE, PUT_ACTUALIZA_USUARIO } from '../../config/config';
+import { POST_ALTA_USUARIO, POST_LOGIN, POST_LOGIN_GOOGLE, PUT_ACTUALIZA_USUARIO, GET_USUARIO, GET_BUSQUEDA_USUARIO, DELETE_BORRAR_USUARIO } from '../../config/config';
 
 
 // import 'rxjs/add/operator/map';
@@ -44,9 +44,13 @@ actualizarUsuario(usuario:Usuario){
   return this.http.put(`${PUT_ACTUALIZA_USUARIO}/${usuario._id}?token=${this.token}`, usuario)
           .pipe(map((resp: any) =>{
             // this.usuario = resp.usuario;
-            let usuarioDB: Usuario = resp.usuario;
-            this.guardarStorage(usuarioDB._id, this.token, usuarioDB)
-            swal('Usuario actualizado', usuario.nombre, 'success');
+
+            if(usuario._id = this.usuario._id){
+              let usuarioDB: Usuario = resp.usuario;
+              this.guardarStorage(usuarioDB._id, this.token, usuarioDB)
+              swal('Usuario actualizado', usuario.nombre, 'success');
+            }
+
             return true;
           }));
 
@@ -66,6 +70,8 @@ cambiarImagen(archivo:File, id:string){
 
 
 }
+
+
 
 
 login(usuario: Usuario, recordar: boolean = false){
@@ -137,5 +143,34 @@ cargarStorage(){
   }
 
 }
+
+
+cargarUsuarios(desde:number = 0){
+  
+  let url:string = `${GET_USUARIO}?desde=${desde}`;
+  return this.http.get(url);
+
+}
+
+buscarUsuarios(termino:string){
+  let url:string = `${GET_BUSQUEDA_USUARIO}/usuarios/${termino}`;
+  return this.http.get(url)
+          .pipe(map((resp:any) => resp.usuarios ));
+}
+
+
+borrarUsuario(id:string){
+
+  let url:string = `${DELETE_BORRAR_USUARIO}/${id}?token=${this.token}`;
+
+  return this.http.delete(url)
+             .pipe(map(resp =>{
+               swal('Usuario borrado', 'El usuario a sido eliminado correctamente', 'success');
+               return true;
+             }));
+
+}
+
+
 
 }
