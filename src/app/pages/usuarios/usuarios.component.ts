@@ -112,7 +112,7 @@ export class UsuariosComponent implements OnInit {
 
   mostrarModal(usuario:Usuario){
     let tipo:string = 'usuarios';
-    this._modalUploadService.mostrarModal({tipo, id: usuario._id, titulo: `Cambiar imagen de: ${usuario.nombre}`});
+    this._modalUploadService.mostrarModal({tipo, id: usuario._id, titulo: `Cambiar imagen del hospital: ${usuario.nombre}`});
   }
 
   

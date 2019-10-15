@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
-import { POST_ALTA_USUARIO, POST_LOGIN, POST_LOGIN_GOOGLE, PUT_ACTUALIZA_USUARIO, GET_USUARIO, GET_BUSQUEDA_USUARIO, DELETE_BORRAR_USUARIO } from '../../config/config';
+import { POST_ALTA_USUARIO, POST_LOGIN, POST_LOGIN_GOOGLE, PUT_ACTUALIZA_USUARIO, GET_USUARIO, GET_BUSQUEDA_COLLECCION, DELETE_BORRAR_USUARIO } from '../../config/config';
 
 
 // import 'rxjs/add/operator/map';
@@ -153,7 +153,7 @@ cargarUsuarios(desde:number = 0){
 }
 
 buscarUsuarios(termino:string){
-  let url:string = `${GET_BUSQUEDA_USUARIO}/usuarios/${termino}`;
+  let url:string = `${GET_BUSQUEDA_COLLECCION}/usuarios/${termino}`;
   return this.http.get(url)
           .pipe(map((resp:any) => resp.usuarios ));
 }
