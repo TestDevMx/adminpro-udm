@@ -45,3 +45,4 @@ export const PUT_SUBIR_IMAGEN:string = `${URL_SERVICE}/upload`;
  * Rutas para servicio de busqueda (todo, collecion)
  */
 export const GET_BUSQUEDA_COLLECCION:string = `${URL_SERVICE}/busqueda/coleccion`;
+export const GET_BUSQUEDA_TODO:string = `${URL_SERVICE}/busqueda/todo`;
