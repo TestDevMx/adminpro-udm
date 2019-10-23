@@ -46,3 +46,9 @@ export const PUT_SUBIR_IMAGEN:string = `${URL_SERVICE}/upload`;
  */
 export const GET_BUSQUEDA_COLLECCION:string = `${URL_SERVICE}/busqueda/coleccion`;
 export const GET_BUSQUEDA_TODO:string = `${URL_SERVICE}/busqueda/todo`;
+
+/**
+ * Renovar token
+ */
+export const GET_RENOVAR_TOKEN:string = `${URL_SERVICE}/login/renuevatoken`;
+

@@ -9,7 +9,7 @@ import { SettingsService,
          SubirArchivoService, 
          ModalUploadService,
          HospitalService,
-         MedicoService } from './service.index';
+         MedicoService, VerificaTokenGuard } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     UsuarioService, 
     LoginGuardGuard, 
     AdminGuard,
+    VerificaTokenGuard,
     SubirArchivoService, 
     ModalUploadService,
     HospitalService,

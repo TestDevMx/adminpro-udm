@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
-import { POST_ALTA_USUARIO, POST_LOGIN, POST_LOGIN_GOOGLE, PUT_ACTUALIZA_USUARIO, GET_USUARIO, GET_BUSQUEDA_COLLECCION, DELETE_BORRAR_USUARIO } from '../../config/config';
+import { POST_ALTA_USUARIO, POST_LOGIN, POST_LOGIN_GOOGLE, PUT_ACTUALIZA_USUARIO, GET_USUARIO, GET_BUSQUEDA_COLLECCION, DELETE_BORRAR_USUARIO, GET_RENOVAR_TOKEN } from '../../config/config';
 
 
 // import 'rxjs/add/operator/map';
 // import { Observable } from 'rxjs';
 import { throwError } from "rxjs";
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, filter } from 'rxjs/operators';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
@@ -29,6 +29,24 @@ export class UsuarioService {
   ) { 
     this.cargarStorage();
     console.log('Servicio de usuario listo')
+
+  }
+
+  renuevaToken(){
+    let url:string = `${GET_RENOVAR_TOKEN}?token=${this.token}`;
+    return this.http.get(url)
+      .pipe( map((resp:any) =>{
+        this.token = resp.token;
+        localStorage.setItem('token', this.token)
+        console.log('Token renovado')
+        return true;
+      }),
+      catchError((err)=>{
+        swal('No se pudo renovar el token', 'No fue posible renovar token' , 'error');
+        this.logout()
+        return throwError(err);
+      }));
+
 
   }
 
